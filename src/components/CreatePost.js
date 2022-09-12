@@ -39,7 +39,6 @@ return (
 <form id="CreateMessageContainer" onSubmit={(event) => {
     event.preventDefault()
     handleSubmit();
-    console.log(willDeliver)
    }}>
        <h1>Create a Post</h1>
        <div>
@@ -83,7 +82,7 @@ return (
       <input 
         type='checkbox'
         // checked = "false"
-        onChange={(event) => {setWillDeliver(event.target.checked), console.log(willDeliver)}}
+        onChange={(event) => setWillDeliver(event.target.checked)}
       />
       </div>
         </div>

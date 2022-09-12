@@ -78,7 +78,7 @@ const App = () => {
         <div>
             <Navbar logout={logout} />
             <Routes>
-                < Route path='/home' element={<Home />} />
+                < Route path='/' element={<Home />} />
                 < Route path='/posts' element={<Posts posts={posts} />} />
                 < Route path='/Profile' element={<Profile setUser={setUser} messages={messages} />} />
                 < Route path='/register' element={<Register setToken={setToken} navigate={navigate} />} />
