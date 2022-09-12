@@ -12,7 +12,8 @@ const CreatePost = ({fetchPosts, navigate}) => {
     const [description, itemDescription] = useState('')
     const [price, itemPrice ] = useState('')
     const [location, itemLocation] = useState('')
-    const post = {title : title, description: description, price : price, location: location}
+    const [willDeliver, setWillDeliver] = useState()
+    const post = {title : title, description: description, price : price, location: location, willDeliver: willDeliver}
 
     const handleSubmit = async () => {
         const results = await makePost(token, post)
@@ -25,6 +26,7 @@ const CreatePost = ({fetchPosts, navigate}) => {
                     <p><strong>Description:</strong> {description}</p>
                     <p><strong>Price:</strong> {price}</p>
                     <p><strong>Location:</strong> {location}</p>
+                    <p><strong>Available for Delivery:</strong>{willDeliver}</p>
                     </div>
             )
         }
@@ -32,16 +34,18 @@ const CreatePost = ({fetchPosts, navigate}) => {
             console.log(results.error.message)
         }
     }
-
+if(token){
 return (
-<form onSubmit={(event) => {
+<form id="CreateMessageContainer" onSubmit={(event) => {
     event.preventDefault()
     handleSubmit();
+    console.log(willDeliver)
    }}>
        <h1>Create a Post</h1>
        <div>
         {/* Name: */}
        <input
+       className='PostInput'
         type='name'
         placeholder='Enter Item Name'
         onChange={(event) => itemTitle(event.target.value)}
@@ -50,6 +54,7 @@ return (
         <div>
         {/* Description: */}
         <input
+        className='PostInput'
         type='description'
         placeholder='Enter Item Description'
         onChange={(event) => itemDescription(event.target.value)}
@@ -58,6 +63,7 @@ return (
         <div>
         {/* Price:      */}
         <input
+        className='PostInput'
         type='price'
         placeholder='Enter Asking Price'
         onChange={(event) => itemPrice(event.target.value)}
@@ -67,15 +73,32 @@ return (
         {/* Location: */}
         {/* <span>  </span> */}
         <input
+        className='PostInput'
         type='location'
         placeholder='Enter Location'
         onChange={(event) => itemLocation(event.target.value)}
         />
+        <div>
+        Available for Delivery?
+      <input 
+        type='checkbox'
+        // checked = "false"
+        onChange={(event) => {setWillDeliver(event.target.checked), console.log(willDeliver)}}
+      />
+      </div>
         </div>
         <Button type='submit' variant='contained' color='success'>Submit</Button>
-        <Link to='/Posts' ><Button variant='contained' color='success' style={{margin: '2rem'}}>Back</Button></Link>
+        <Link to='/Posts'><Button variant='contained' color='success'>Back</Button></Link>
    </form>
 )
+}
+else{
+    return(
+        <div id='FlexContainer'>
+        <h2>Please Login or Register to Begin Posting</h2>
+        </div>
+    )
+}
 }
 
 export default CreatePost

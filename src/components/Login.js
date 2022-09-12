@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { loginUser } from '../api';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 import { grabData } from '../api';
 
@@ -25,24 +26,26 @@ const Login = ({setToken, navigate}) => {
     }
 
     return (
-        <form onSubmit={(event) => {
+        <form id='LoginContainer' onSubmit={(event) => {
          event.preventDefault()
          handleSubmit();
         }}>
             <h1>Login</h1>
             <input
+            className='PostInput'
              type='text'
              placeholder='Enter Username'
              onChange={(event) => checkUsername(event.target.value)}
              />
              <input
+             className='PostInput'
              type='password'
              placeholder='Enter Password'
              onChange={(event) => checkPassword(event.target.value)}
              />
-             <button type='submit'>Login</button>
+             <Button variant='contained' color='success' type='submit'>Login</Button>
              <div>
-             <Link to='/Register'>New User? Click Here to Register</Link>
+             {/* <Link to='/Register'>New User? Click Here to Register</Link> */}
              </div>
         </form>
         

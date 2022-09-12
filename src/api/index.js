@@ -96,8 +96,8 @@ export const makePost = async (token, post) => {
           title: post.title,
           description: post.description,
           price: post.price,
-          location: post.location
-          // willDeliver: post.willDeliver
+          location: post.location,
+          willDeliver: post.willDeliver
         }
       })
     })

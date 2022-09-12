@@ -13,32 +13,29 @@ const Profile = ({ messages }) => {
         // console.log(grabData(token))
     return (
         <div>
-        <h1>Welcome {`${username}`}</h1>
-        <Link to='/CreatePost'>
-            <button>
-            Create Post
-            </button>
-            </Link>   
-        <h2>Messages to Me:</h2>
+            <div id='FlexContainer2'>
+        <h1 id='WelcomeMessage'>Welcome {`${username}`}</h1>
+        </div>
+        <h2 className='MyMessageTitle'>Messages to Me:</h2>
         {
             messages.map((message => { 
                 const {fromUser, content, _id } = message
                 if(fromUser.username !== username){
                 return (
-                    <div key={_id}>
+                    <div className='MessageContent' key={_id}>
                         <h4>From: {fromUser.username}</h4>
                         <p>{content}</p>
                         </div>
                 )}
             }))
         }
-        <h2>Messages from Me:</h2>
+        <h2 className='MyMessageTitle'>Messages from Me:</h2>
         {
             messages.map((message => { 
                 const {fromUser, content, _id } = message
                 if(fromUser.username === username){
                 return (
-                    <div key={_id}>
+                    <div className='MessageContent' key={_id}>
                         <h4>Sent by Me:</h4>
                         <p>{content}</p>
                         </div>

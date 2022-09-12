@@ -1,9 +1,11 @@
-import React from 'react';
+import React from 'react'; 
 
 const Home = () => {
     return (
-        <h1>Stranger's Things</h1>
+        <div id='FlexContainer' >
+        <h1 id='MainTitle' >Stranger's Things</h1>
+        </div>
     )
-}
+    }
 
 export default Home

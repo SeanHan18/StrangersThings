@@ -27,7 +27,6 @@ const App = () => {
     const [user, setUser] = useState({})
     const navigate = useNavigate();
 
-    // console.log(token)
 
     function logout() {
         window.localStorage.removeItem('token');
@@ -53,11 +52,11 @@ const App = () => {
         else {
             console.log(results.error.message);
         }
-        console.log(user)
+        // console.log(user)
     }
     async function fetchMessages() {
         const results = await grabData(token)
-        console.log(grabData(token))
+        // console.log(results)
         setMessages(results.data.messages)
     }
 
@@ -86,8 +85,8 @@ const App = () => {
                 < Route path='/Login' element={<Login setToken={setToken} navigate={navigate} />} />
                 < Route path='/CreatePost' element={<CreatePost setToken={setToken} navigate={navigate} fetchPosts={fetchPosts} />} />
                 < Route path='/posts/:id' element={<SinglePostView posts={ posts } />}/>
-                < Route path='/Message' element={<Message/>}/>
-                < Route path='/posts/edit-post/:postID' element={<EditPost posts={posts} token={token}/>}/>
+                < Route path='/Message' element={<Message navigate={navigate} fetchMessages={fetchMessages}/>}/>
+                < Route path='/posts/edit-post/:postID' element={<EditPost posts={posts} token={token} fetchPosts={fetchPosts} navigate={navigate}/>}/>
             </Routes>
         </div>
     )
@@ -101,12 +100,3 @@ root.render(
     </BrowserRouter>
 );
 
-/*
-Login
-Registration
-Posts
-Profile
-Navbar
-AddPost
-
-*/
