@@ -9,14 +9,14 @@ const Posts = ({ posts }) => {
     let delivery = ''
 
     function postMatches(post, text) {
-        if (post.title.toLowerCase().includes(text.toLowerCase()) || post.description.toLowerCase().includes(text.toLowerCase()) || post.price.toLowerCase().includes(text.toLowerCase()) || post.location.toLowerCase().includes(text.toLowerCase())) {
+        if (post.title.toLowerCase().includes(text.toLowerCase()) || post.description.toLowerCase().includes(text.toLowerCase()) || post.price.toLowerCase().includes(text.toLowerCase())) {
             return true
         }
         else {
             return false
         }
     }
-
+    
     const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
     const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
