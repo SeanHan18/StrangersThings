@@ -65,7 +65,7 @@ const Posts = ({ posts, navigate }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/.Posts') }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/posts') }}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>
@@ -132,7 +132,7 @@ const Posts = ({ posts, navigate }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/.Posts') }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/posts') }}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>
