@@ -1,5 +1,5 @@
 import { toUnitless } from "@mui/material/styles/cssUtils";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Re } from "react-router-dom";
 // import { useState } from "react";
 // import { useParams } from "react-router-dom";
 
@@ -120,7 +120,7 @@ export const deletePost = async(token, _id) => {
     })
     const result = await response.json();
     console.log("Post successfully deleted")
-    document.location.reload(true)
+    // document.location.reload(true)
     return result;
     
     

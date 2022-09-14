@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { deletePost } from '../api';
 import { Button } from '@mui/material';
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, navigate }) => {
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''
@@ -65,7 +65,7 @@ const Posts = ({ posts }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id) }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/.Posts') }}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>
@@ -132,7 +132,7 @@ const Posts = ({ posts }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id) }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/.Posts') }}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>
