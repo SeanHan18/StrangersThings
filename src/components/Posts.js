@@ -2,11 +2,17 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { deletePost } from '../api';
 import { Button } from '@mui/material';
+// import { getPosts } from '../api';
 
-const Posts = ({ posts, navigate }) => {
+const Posts = ({ posts, navigate, fetchPosts }) => {
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''
+
+    // const handleSubmit = async () => {
+    //     let results = await getPosts(token)
+    //     if (results.success) {fetchPosts()}
+    // }
 
     function postMatches(post, text) {
         if (post.title.toLowerCase().includes(text.toLowerCase()) || post.description.toLowerCase().includes(text.toLowerCase()) || post.price.toLowerCase().includes(text.toLowerCase())) {
@@ -65,7 +71,7 @@ const Posts = ({ posts, navigate }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/posts') }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id)}}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>
@@ -132,7 +138,7 @@ const Posts = ({ posts, navigate }) => {
                                                     <Link to={`/posts/edit-post/${_id}`}>
                                                         <Button variant='contained' color='success'>Edit</Button>
                                                     </Link>
-                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id), navigate('/posts') }}>Delete</Button>
+                                                    <Button variant='contained' color='error' onClick={() => { deletePost(token, _id)}}>Delete</Button>
                                                 </div>
                                             ) : (
                                                 <Link to={`/posts/${_id}`}>

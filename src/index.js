@@ -63,7 +63,7 @@ const App = () => {
 
     useEffect(() => {
         fetchPosts()
-    }, [token])
+    }, [token, posts] )
 
     useEffect(() => {
         getMe();
@@ -71,7 +71,7 @@ const App = () => {
 
     useEffect(() => {
         fetchMessages();
-    }, [token])
+    }, [token, messages])
 
 
     return (
@@ -80,7 +80,7 @@ const App = () => {
             <Routes>
                 < Route path='/' element={<Home />} />
                 < Route path='/home' element={<Home />} />
-                < Route path='/posts' element={<Posts posts={posts} navigate={navigate} />} />
+                < Route path='/posts' element={<Posts posts={posts} navigate={navigate} fetchPosts={fetchPosts} />} />
                 < Route path='/Profile' element={<Profile setUser={setUser} messages={messages} />} />
                 < Route path='/register' element={<Register setToken={setToken} navigate={navigate} />} />
                 < Route path='/Login' element={<Login setToken={setToken} navigate={navigate} />} />
